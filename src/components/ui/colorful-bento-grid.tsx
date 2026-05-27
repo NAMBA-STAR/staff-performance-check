@@ -271,7 +271,7 @@ export const DashboardGrid = () => {
                   {prodView === 'bar' ? (
                     <BarChart data={prodBarData} margin={{ top: 15, right: 20, bottom: 5, left: -20 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-                      <XAxis dataKey="staff" stroke="#777" fontSize={12} tickMargin={10} tickFormatter={(val) => `St ${val}`} />
+                      <XAxis dataKey="staff" stroke="#777" fontSize={12} tickMargin={10} tickFormatter={(val) => `St ${val}`} interval={0} />
                       <YAxis stroke="#777" fontSize={12} domain={[0, 'dataMax + 0.2']} />
                       <Tooltip cursor={{fill: '#f3f4f6'}} contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <ReferenceLine y={1.0} stroke="#9ca3af" strokeDasharray="3 3" label={{ position: 'right', value: '1.0', fill: '#6b7280', fontSize: 11 }} />
@@ -284,7 +284,7 @@ export const DashboardGrid = () => {
                   ) : (
                     <LineChart data={prodTrendData} margin={{ top: 15, right: 20, bottom: 5, left: -20 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-                      <XAxis dataKey="name" stroke="#777" fontSize={12} tickMargin={10} />
+                      <XAxis dataKey="name" stroke="#777" fontSize={10} tickMargin={10} interval={0} />
                       <YAxis stroke="#777" fontSize={12} domain={[0, 'auto']} />
                       <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <ReferenceLine y={1.0} stroke="#9ca3af" strokeDasharray="3 3" />
@@ -307,7 +307,7 @@ export const DashboardGrid = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={attendanceData} margin={{ top: 15, right: 20, bottom: 5, left: -20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-                    <XAxis dataKey="staff" stroke="#777" fontSize={12} tickMargin={10} tickFormatter={(val) => `St ${val}`} />
+                    <XAxis dataKey="staff" stroke="#777" fontSize={12} tickMargin={10} tickFormatter={(val) => `St ${val}`} interval={0} />
                     <YAxis stroke="#777" fontSize={12} />
                     <Tooltip cursor={{fill: '#f3f4f6'}} contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                     <Legend wrapperStyle={{ fontSize: '12px' }} />
@@ -328,7 +328,7 @@ export const DashboardGrid = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={lineChartData} margin={{ top: 5, right: 20, bottom: 5, left: -20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                    <XAxis dataKey="name" stroke="#777" fontSize={12} tickMargin={10} />
+                    <XAxis dataKey="name" stroke="#777" fontSize={10} tickMargin={10} interval={0} />
                     <YAxis stroke="#777" fontSize={12} />
                     <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '12px', color: '#0A0A0A', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                     <Legend wrapperStyle={{ fontSize: '13px', fontWeight: '500' }} />
