@@ -59,7 +59,17 @@ export const DashboardGrid = () => {
         dynamicTyping: true,
         skipEmptyLines: true,
         complete: (results) => {
-          const parsedData = results.data as PerformanceData[];
+          const parsedData = (results.data as PerformanceData[]).map(row => {
+            // CSVに生産性係数がない場合は算出式: (総合スコア÷100)÷(週間労働時間÷40) で自動計算する
+            if (row.生産性係数 === undefined || row.生産性係数 === null || isNaN(row.生産性係数)) {
+              if (row.総合スコア && row.週間労働時間) {
+                row.生産性係数 = Number(((row.総合スコア / 100) / (row.週間労働時間 / 40)).toFixed(2));
+              } else {
+                row.生産性係数 = 0;
+              }
+            }
+            return row;
+          });
           setData(parsedData);
           setLastUpdated(new Date());
           
