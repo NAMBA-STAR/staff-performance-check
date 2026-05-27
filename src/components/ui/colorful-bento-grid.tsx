@@ -59,7 +59,21 @@ export const DashboardGrid = () => {
         dynamicTyping: true,
         skipEmptyLines: true,
         complete: (results) => {
+          const parseHoursToDecimal = (value: any) => {
+            if (!value) return 0;
+            if (typeof value === 'number') return value;
+            if (String(value).includes(':')) {
+              const [h, m] = String(value).split(':').map(Number);
+              return h + m / 60;
+            }
+            return parseFloat(value) || 0;
+          };
+
           const parsedData = (results.data as PerformanceData[]).map(row => {
+            // "HH:MM"形式の時間を10進数に変換
+            row.週間労働時間 = parseHoursToDecimal(row.週間労働時間);
+            row.残業時間 = parseHoursToDecimal(row.残業時間);
+
             // CSVに生産性係数がない場合は算出式: (総合スコア÷100)÷(週間労働時間÷40) で自動計算する
             if (row.生産性係数 === undefined || row.生産性係数 === null || isNaN(row.生産性係数)) {
               if (row.総合スコア && row.週間労働時間) {
